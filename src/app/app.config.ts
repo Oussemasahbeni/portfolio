@@ -24,9 +24,6 @@ export const appConfig: ApplicationConfig = {
         defaultLang: 'en',
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
-        flatten: {
-          aot: !isDevMode(),
-        },
       },
       loader: TranslocoHttpLoader,
     }),

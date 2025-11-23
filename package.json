@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && npm run transloco:optimize",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
@@ -50,7 +50,6 @@
     "@angular/build": "^21.0.0",
     "@angular/cli": "^21.0.0",
     "@angular/compiler-cli": "^21.0.0",
-    "@jsverse/transloco-optimize": "^8.2.0",
     "@spartan-ng/cli": "^0.0.1-alpha.566",
     "@types/aos": "^3.0.7",
     "@types/express": "^5.0.1",
