@@ -8,8 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
-    "lint": "ng lint",
-    "transloco:optimize": "transloco-optimize dist/portfolio/browser/i18n"
+    "lint": "ng lint"
   },
   "prettier": {
     "overrides": [

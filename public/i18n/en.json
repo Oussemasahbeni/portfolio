@@ -25,7 +25,8 @@
             "areasForGrowth": "Years of Experience",
             "howMuchIBench": "How Much I Bench",
             "statsTitle": "By the Numbers",
-            "techStackTitle": "Technologies I Work With"
+            "techStackTitle": "Technologies I Work With",
+            "techStackDescription": "Here are some of the technologies and tools I frequently work with in my projects:"
         },
         "experience": {
             "title": "Experience",

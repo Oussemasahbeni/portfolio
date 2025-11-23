@@ -3,7 +3,7 @@
   class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
   *transloco="let t; prefix: 'home.aboutMe'"
 >
-  <div class="space-y-16">
+  <div class="flex flex-col gap-8">
     <!-- Section Header -->
     <div data-aos="fade-up" class="text-center space-y-4">
       <div
@@ -16,7 +16,7 @@
     </div>
 
     <!-- Modern Stats Grid -->
-    <div data-aos="fade-up" data-aos-delay="400" class="space-y-8">
+    <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col gap-8">
       <div class="text-center">
         <h3 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
           {{ t("statsTitle") || "By the Numbers" }}
@@ -29,7 +29,7 @@
       <!-- Stats Cards Grid -->
       <div
         appSpotlight
-        class="spotlight-grid grid grid-cols-2 lg:grid-cols-4 gap-4"
+        class="spotlight-grid grid grid-cols-1 lg:grid-cols-4 gap-4"
       >
         <section
           hlmCard
@@ -126,20 +126,18 @@
     </div>
 
     <!-- Modern Tech Stack -->
-    <div data-aos="fade-up" data-aos-delay="600" class="space-y-8">
+    <div data-aos="fade-up" data-aos-delay="600" class="flex flex-col gap-8">
       <div class="text-center">
         <h3 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
           {{ t("techStackTitle") || "Technologies I Work With" }}
         </h3>
         <p class="text-zinc-600 dark:text-zinc-400">
-          The tools and frameworks that power my development
+          {{ t("techStackDescription") }}
         </p>
       </div>
 
       <!-- Fixed Grid Layout for Tech Icons -->
-      <div
-        class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 max-w-6xl mx-auto"
-      >
+      <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 w-full">
         @for (tech of techStack(); track tech.name) {
         <div
           class="flex items-center justify-center w-16 h-16 rounded-xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-200 dark:border-zinc-700 hover:shadow-md transition-shadow cursor-pointer"
