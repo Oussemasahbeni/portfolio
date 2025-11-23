@@ -44,6 +44,7 @@ select {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  @apply min-h-screen bg-gradient-to-br from-white via-gray-50 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950;
 }
 
 /*
