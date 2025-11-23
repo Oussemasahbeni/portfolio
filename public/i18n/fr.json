@@ -3,7 +3,8 @@
         "aboutMe": "À Propos",
         "experience": "Expérience",
         "projects": "Projets",
-        "contact": "Contact"
+        "contact": "Contact",
+        "settings": "Paramètres"
     },
     "introduction": {
         "title": "Salut ! Je suis",
@@ -24,7 +25,9 @@
             "areasForGrowth": "Années d'Expérience",
             "howMuchIBench": "Combien je soulève",
             "statsTitle": "En Chiffres",
-            "techStackTitle": "Technologies avec Lesquelles je Travaille"
+            "statsDescription": "Quelques métriques qui définissent mon parcours",
+            "techStackTitle": "Technologies avec Lesquelles je Travaille",
+            "techStackDescription": "Un aperçu des technologies et outils que j’utilise régulièrement."
         },
         "experience": {
             "title": "Expérience",

@@ -2,23 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        if (document && document.documentElement) {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-        }
-      } else {
-        if (document && document.documentElement) {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-        }
-      }
-    </script>
+
     <title>Oussema Sahbeni | Full Stack Developer</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,6 +54,10 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+
+    <!-- Preconnect for Critical Resources -->
+    <link rel="preconnect" href="https://img.icons8.com" />
+    <link rel="preconnect" href="https://api.github.com" crossorigin />
 
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
@@ -210,6 +198,24 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="apple-touch-icon" href="fapple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
+
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        if (document && document.documentElement) {
+          document.documentElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      } else {
+        if (document && document.documentElement) {
+          document.documentElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        }
+      }
+    </script>
 
     <!-- GOOGLE analytics -->
     <script
