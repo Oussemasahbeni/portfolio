@@ -41,9 +41,20 @@ export class ThemeService {
 
   private initializeTheme(): void {
     if (isPlatformBrowser(this._platformId)) {
-      this.theme.set(
-        localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
-      );
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
+      const theme =
+        savedTheme === 'dark' || (!savedTheme && prefersDark)
+          ? 'dark'
+          : 'light';
+
+      this.theme.set(theme);
+      // Ensure the class is applied (should already be from inline script)
+      if (theme === 'dark') {
+        this._renderer.addClass(this._document.documentElement, 'dark');
+      }
       return;
     }
   }
