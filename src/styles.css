@@ -4,7 +4,7 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css";
-@import "aos/dist/aos.css";
+@plugin "@tailwindcss/typography";
 
 @import "@angular/cdk/overlay-prebuilt.css";
 
@@ -44,7 +44,6 @@ select {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  @apply min-h-screen bg-gradient-to-br from-white via-gray-50 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950;
 }
 
 /*

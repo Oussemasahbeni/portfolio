@@ -3,38 +3,21 @@ import {
   ChangeDetectionStrategy,
   Component,
   PLATFORM_ID,
-  afterNextRender,
   inject,
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import * as AOS from 'aos';
-import { HeroComponent } from './pages/hero/hero.component';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
-import { BackToTopComponent } from './layout/back-to-top/back-to-top.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { AboutMeComponent } from './pages/about-me/about-me.component';
-import { ExperienceComponent } from './pages/experience/experience.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
+import { BackToTopComponent } from './components/layout/back-to-top/back-to-top.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { NavbarComponent } from './components/layout/navbar/navbar.component';
 
 declare const gtag: Function;
 @Component({
   selector: 'app-root',
-  imports: [
-    FooterComponent,
-    NavbarComponent,
-    HeroComponent,
-    AboutMeComponent,
-    ExperienceComponent,
-    ProjectsComponent,
-    BackToTopComponent,
-  ],
+  imports: [RouterOutlet, FooterComponent, NavbarComponent, BackToTopComponent],
   template: `
     <app-navbar />
-    <app-hero id="hero" />
-    <app-about-me id="about_me" />
-    <app-experience id="experience" />
-    <app-projects id="projects" />
+    <router-outlet />
     <app-footer />
     <app-back-to-top
       variant="glass"
@@ -50,15 +33,6 @@ export class AppComponent {
   private readonly platform = inject(PLATFORM_ID);
 
   constructor() {
-    afterNextRender(() => {
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100,
-        easing: 'ease-out-cubic',
-      });
-    });
-
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (isPlatformBrowser(this.platform) && typeof gtag !== 'undefined') {

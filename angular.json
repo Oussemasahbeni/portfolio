@@ -11,72 +11,58 @@
           "style": "none"
         }
       },
-      "root": "",
+      "root": ".",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@analogjs/platform:vite",
           "options": {
-            "outputPath": "dist/portfolio",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
-            "allowedCommonJsDependencies": [
-              "aos"
-            ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              },
-              "src/robots.txt"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "configFile": "vite.config.ts",
+            "main": "src/main.ts",
+            "outputPath": "dist/client",
+            "tsConfig": "tsconfig.app.json"
           },
+          "defaultConfiguration": "production",
           "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "outputHashing": "all"
-            },
             "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "mode": "development"
+            },
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true,
+                  "removeSpecialComments": true
+                },
+                "fonts": {
+                  "inline": true
+                }
+              },
+              "outputHashing": "all",
+              "extractLicenses": true,
+              "sourcemap": false,
+              "mode": "production"
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@analogjs/platform:vite-dev-server",
+          "defaultConfiguration": "development",
+          "options": {
+            "buildTarget": "portfolio:build",
+            "port": 4200
+          },
           "configurations": {
+            "development": {
+              "buildTarget": "portfolio:build:development",
+              "hmr": true
+            },
             "production": {
               "buildTarget": "portfolio:build:production"
-            },
-            "development": {
-              "buildTarget": "portfolio:build:development"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test"
@@ -91,38 +77,6 @@
           }
         }
       }
-    }
-  },
-  "cli": {
-    "analytics": "8ff70359-0535-45e1-8a64-94de4e083126",
-    "schematicCollections": [
-      "angular-eslint"
-    ]
-  },
-  "schematics": {
-    "@schematics/angular:component": {
-      "type": "component"
-    },
-    "@schematics/angular:directive": {
-      "type": "directive"
-    },
-    "@schematics/angular:service": {
-      "type": "service"
-    },
-    "@schematics/angular:guard": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:interceptor": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:module": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:pipe": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:resolver": {
-      "typeSeparator": "."
     }
   }
 }

@@ -1,11 +1,9 @@
-import {
-  bootstrapApplication,
-  BootstrapContext,
-} from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
+import 'zone.js/node';
+import '@angular/platform-server/init';
+import { render } from '@analogjs/router/server';
+
+import { App } from './app/app';
 import { config } from './app/app.config.server';
 
-const bootstrap = (context: BootstrapContext) =>
-  bootstrapApplication(AppComponent, config, context);
+export default render(App, config);
 
-export default bootstrap;

@@ -1,39 +1,33 @@
+import { provideContent, withMarkdownRenderer } from '@analogjs/content';
+import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
+import { provideFileRouter } from '@analogjs/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   ApplicationConfig,
-  inject,
-  isDevMode,
-  provideAppInitializer,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { provideTransloco, TranslocoService } from '@jsverse/transloco';
-import { firstValueFrom } from 'rxjs';
-import { TranslocoHttpLoader } from './transloco-loader';
+import { withViewTransitions } from '@angular/router';
+import {
+  provideNgIconsConfig,
+  withContentSecurityPolicy,
+  withExceptionLogger,
+} from '@ng-icons/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()),
     provideBrowserGlobalErrorListeners(),
-    provideTransloco({
-      config: {
-        availableLangs: ['en', 'fr'],
-        defaultLang: 'en',
-        reRenderOnLangChange: true,
-        prodMode: !isDevMode(),
-      },
-      loader: TranslocoHttpLoader,
-    }),
-
-    provideAppInitializer(() => {
-      const translocoService = inject(TranslocoService);
-      const defaultLang = translocoService.getDefaultLang();
-      translocoService.setActiveLang(defaultLang);
-      return firstValueFrom(translocoService.load(defaultLang));
-    }),
+    provideContent(withMarkdownRenderer(), withShikiHighlighter()),
+    provideFileRouter(withViewTransitions()),
     provideClientHydration(withEventReplay()),
+    provideNgIconsConfig(
+      {},
+      withContentSecurityPolicy(),
+      withExceptionLogger()
+    ),
   ],
 };
