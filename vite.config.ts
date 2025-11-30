@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
             '/',
             '/blog',
             {
-              contentDir: 'src/content/blog',
+              contentDir: 'src/content',
               transform: (file: PrerenderContentFile) => {
                 // do not include files marked as draft in frontmatter
                 if (file.attributes['draft']) {
