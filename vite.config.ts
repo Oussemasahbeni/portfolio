@@ -40,17 +40,6 @@ export default defineConfig(({ mode }) => {
             },
           ],
         },
-        nitro: {
-          preset: 'vercel',
-          // serveStatic: true,
-          // output: {
-          //   dir: 'dist/analog',
-          //   publicDir: 'dist/analog/public',
-          // },
-          // prerender: {
-          //   failOnError: true,
-          // },
-        },
       }),
       tailwindcss(),
       viteTsConfigPaths(),
