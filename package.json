@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
-    "lint": "ng lint"
+    "dev": "vite",
+    "start": "pnpm run dev",
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "test": "vitest",
+    "preview": "node dist/analog/server/index.mjs"
   },
   "prettier": {
     "overrides": [
