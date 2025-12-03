@@ -10,16 +10,14 @@ import { FeaturedBlogs } from '../components/blog/featured-blogs/featured-blogs'
 import { AboutMe } from '../components/home/about-me/about-me.';
 import { Experience } from '../components/home/experience/experience.';
 import { Hero } from '../components/home/hero/hero.';
-import { Projects } from '../components/home/projects/projects.';
 
 @Component({
   selector: 'home',
-  imports: [Hero, AboutMe, Experience, Projects, FeaturedBlogs],
+  imports: [Hero, AboutMe, Experience, FeaturedBlogs],
   template: `
     <app-hero />
     <app-about-me />
     <app-experience />
-    <app-projects />
     <app-featured-blogs />
   `,
 })

@@ -56,9 +56,9 @@ import { ContentMetadata } from '../../../lib/content-metadata/content-metadata'
             />
           </div>
 
-          <h4 class="text-xl font-bold tracking-tight text-foreground">
+          <h1 class="text-xl font-bold tracking-tight text-foreground">
             {{ article.attributes.title }}
-          </h4>
+          </h1>
 
           <p
             class="mt-2 mb-6 text-sm text-muted-foreground leading-relaxed line-clamp-3"

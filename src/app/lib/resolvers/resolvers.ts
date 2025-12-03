@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { ContentMetadata } from '../content-metadata/content-metadata';
 
 const BASE_URL = 'https://oussemasahbeni.tn';
-const DEFAULT_IMAGE = '/default-social.jpg';
+const DEFAULT_IMAGE = '/default-social.webp';
 
 function injectActiveContentMetadata(
   route: ActivatedRouteSnapshot

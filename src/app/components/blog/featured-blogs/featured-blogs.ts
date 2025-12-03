@@ -7,12 +7,19 @@ import { FeaturedBlogPreview } from '../featured-blog-preview/featured-blog-prev
   selector: 'app-featured-blogs',
   imports: [FeaturedBlogPreview],
   host: {
-    class: 'block max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24',
+    class: 'block max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 ',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: ` <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
-      Featured Posts
-    </h2>
+  template: ` <!-- Section Header -->
+    <div class="text-center space-y-4">
+      <div
+        class="inline-flex items-center gap-2 text-lg font-mono text-zinc-600 dark:text-zinc-400"
+      >
+        <span class="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+        <span> Featured Posts </span>
+        <span class="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+      </div>
+    </div>
 
     <div
       class="mt-6 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"

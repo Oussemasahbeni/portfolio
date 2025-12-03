@@ -16,10 +16,117 @@ import { HlmIconImports } from '@spartan-ng/helm/icon';
       radixLockClosed,
     }),
   ],
-  templateUrl: './projects.html',
+  template: `
+    <section class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="flex flex-col gap-8">
+        <!-- Section Header -->
+        <div class="text-center">
+          <div
+            class="inline-flex items-center gap-2 text-lg font-mono text-zinc-600 dark:text-zinc-400"
+          >
+            <span class="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+            <span>Projects</span>
+            <span class="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+          </div>
+        </div>
+
+        <!--  Projects Grid -->
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          @for (item of projects(); track $index) {
+          <!--  Project Card -->
+          <div hlmCard class="p-6">
+            <!-- Project Type Badge -->
+            <span hlmBadge class="bg-blue-500 text-white dark:bg-blue-600">
+              {{ item.type }}
+            </span>
+
+            <!-- Project Title -->
+            <h3 class="text-xl font-bold">
+              {{ item.name }}
+            </h3>
+
+            <!-- Project Description -->
+            <p
+              class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed grow"
+            >
+              {{ item.description }}
+            </p>
+
+            <!-- Key Highlights -->
+            @if(item.highlights && item.highlights.length > 0) {
+
+            <h4
+              class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider"
+            >
+              Key Features
+            </h4>
+            <ul class="flex flex-col gap-2 mb-4">
+              @for (highlight of item.highlights.slice(0, 3); track $index) {
+              <li
+                class="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-400"
+              >
+                <div
+                  class="w-1 h-1 rounded-full bg-blue-500 mt-1.5 shrink-0"
+                ></div>
+                <span>{{ highlight }}</span>
+              </li>
+              }
+            </ul>
+            }
+
+            <!-- Technologies -->
+
+            <h4
+              class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider"
+            >
+              Technologies
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              @for (technology of item.techs; track $index) {
+              <span variant="secondary" hlmBadge>
+                {{ technology }}
+              </span>
+              } @if(item.techs.length > 6) {
+              <span hlmBadge> +{{ item.techs.length - 6 }} </span>
+              }
+            </div>
+
+            <!-- Action Button -->
+            <div hlmCardAction class="w-full">
+              @if(item.website){
+              <a
+                [href]="item.website"
+                target="_blank"
+                rel="noopener noreferrer"
+                hlmBtn
+                size="lg"
+                class="w-full"
+              >
+                <ng-icon name="lucideExternalLink" hlm size="sm" />
+                Explore
+              </a>
+              } @else {
+              <button
+                hlmBtn
+                size="lg"
+                class="w-full"
+                [disabled]="true"
+                variant="outline"
+              >
+                <ng-icon name="radixLockClosed" hlm size="sm" />
+                Private Project
+              </button>
+              }
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </section>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Projects {
+export default class Projects {
   projects = signal([
     {
       name: 'Sabeel Platform',

@@ -12,7 +12,6 @@ import {
   DOCUMENT,
   inject,
   PLATFORM_ID,
-  signal,
 } from '@angular/core';
 
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -28,6 +27,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmSkeletonImports } from '@spartan-ng/helm/skeleton';
 import { ReadTimePipe } from '../../components/pipes/read-time.pipe';
+import { ReadingProgress } from '../../components/reading-progress/reading-progress';
 import { ShareButton } from '../../components/share-button/share-button';
 import { ContentMetadata } from '../../lib/content-metadata/content-metadata';
 import {
@@ -56,6 +56,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   imports: [
     ShareButton,
+    ReadingProgress,
     NgOptimizedImage,
     MarkdownComponent,
     DatePipe,
@@ -67,7 +68,6 @@ export const routeMeta: RouteMeta = {
   ],
   host: {
     class: 'block max-w-7xl mx-auto px-4 mt-4 py-16 lg:py-24',
-    '(window:scroll)': 'onWindowScroll()',
   },
   providers: [
     provideIcons({
@@ -80,12 +80,7 @@ export const routeMeta: RouteMeta = {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
-      <div
-        class="h-full bg-blue-400 transition-transform duration-75 ease-out origin-left"
-        [style.transform]="'scaleX(' + readingProgress() / 100 + ')'"
-      ></div>
-    </div>
+    <app-reading-progress />
 
     @if (article(); as article) {
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -119,7 +114,7 @@ export const routeMeta: RouteMeta = {
           <img
             class="w-full object-cover rounded-xl border border-border shadow-sm bg-muted"
             width="1200"
-            height="630"
+            height="800"
             [ngSrc]="article.attributes.coverImage"
             [alt]="article.attributes.title"
             priority
@@ -190,23 +185,6 @@ export default class BlogPost {
     const article = this.article();
     return article ? parseToc(article.content) : [];
   });
-
-  readonly readingProgress = signal(0);
-
-  onWindowScroll(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const scrollTop =
-        window.scrollY || this.document.documentElement.scrollTop;
-      const height =
-        this.document.documentElement.scrollHeight -
-        this.document.documentElement.clientHeight;
-
-      if (height > 0) {
-        const scrolled = (scrollTop / height) * 100;
-        this.readingProgress.set(scrolled);
-      }
-    }
-  }
 
   scrollTo(id: string) {
     if (isPlatformBrowser(this.platformId)) {

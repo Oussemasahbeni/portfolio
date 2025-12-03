@@ -52,6 +52,11 @@ export class Navbar {
       link: '/blog',
       ariaLabel: 'Blogs page',
     },
+    {
+      title: 'Projects',
+      link: '/project',
+      ariaLabel: 'Projects page',
+    },
   ]);
 
   onClickOutside(): void {
