@@ -10,7 +10,7 @@ Welcome to my portfolio! This project showcases my skills and projects developed
 
 ## Deployment
 
-This portfolio is deployed using Vercel, ensuring seamless and reliable hosting. Check it out live at [https://www.oussemasahbeni.tn](https://www.oussemasahbeni.tn).
+This portfolio is deployed using Vercel, ensuring seamless and reliable hosting. Check it out live at [https://www.oussemasahbeni.com](https://www.oussemasahbeni.com).
 
 ## Features
 

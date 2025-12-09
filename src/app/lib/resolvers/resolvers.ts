@@ -3,7 +3,7 @@ import { MetaTag } from '@analogjs/router';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { ContentMetadata } from '../content-metadata/content-metadata';
 
-const BASE_URL = 'https://oussemasahbeni.tn';
+const BASE_URL = 'https://oussemasahbeni.com';
 const DEFAULT_IMAGE = '/default-social.webp';
 
 function injectActiveContentMetadata(
