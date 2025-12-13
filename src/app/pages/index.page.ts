@@ -1,15 +1,13 @@
-// import { RouteMeta } from '@analogjs/router';
-
-// export const routeMeta: RouteMeta = {
-//   redirectTo: '/blog',
-//   pathMatch: 'full',
-// };
-
+import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
 import { FeaturedBlogs } from '../components/blog/featured-blogs/featured-blogs';
 import { AboutMe } from '../components/home/about-me/about-me.';
 import { Experience } from '../components/home/experience/experience.';
 import { Hero } from '../components/home/hero/hero.';
+
+export const routeMeta: RouteMeta = {
+  title: 'Oussema Sahbeni | Full Stack Developer',
+};
 
 @Component({
   selector: 'home',

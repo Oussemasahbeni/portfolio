@@ -1,10 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   model,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { lucideGithub } from '@ng-icons/lucide';
 import { radixHamburgerMenu, radixLinkedinLogo } from '@ng-icons/radix-icons';
@@ -38,6 +39,7 @@ import { ThemeToggle } from '../theme-toggle/theme-toggle';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {
+  private readonly router = inject(Router);
   /**
    * Whether the mobile menu is open.
    */
@@ -60,6 +62,11 @@ export class Navbar {
       ariaLabel: 'Projects page',
     },
   ]);
+
+  onNavigte(link: string) {
+    this.router.navigate([link]);
+    this.menuOpen.set(false);
+  }
 
   onClickOutside(): void {
     this.menuOpen.set(false);
