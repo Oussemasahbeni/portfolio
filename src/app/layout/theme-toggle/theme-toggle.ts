@@ -12,6 +12,7 @@ import { ThemeService } from '../../core/services/theme.service';
     <button
       (click)="toggleTheme($event)"
       [title]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+      class="cursor-pointer"
       hlmBtn
       size="icon"
       variant="ghost"

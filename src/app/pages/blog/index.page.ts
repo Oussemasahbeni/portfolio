@@ -4,6 +4,7 @@ import { Component, computed, signal } from '@angular/core';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { BlogPreview } from '../../components/blog/blog-preview/blog-preview';
 import { ContentMetadata } from '../../models/content-metadata';
+import { NoiseBackgroundComponent } from '../../shared/components/noise-background/noise-background';
 
 export const routeMeta: RouteMeta = {
   title: 'Blog - Oussema Sahbeni',
@@ -11,11 +12,12 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   selector: 'app-blog',
-  imports: [BlogPreview, HlmButtonImports],
+  imports: [BlogPreview, HlmButtonImports, NoiseBackgroundComponent],
   host: {
     class: 'block max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24',
   },
   template: `
+    <app-noise-background />
     <div class="flex flex-col gap-10">
       <!-- HEADER -->
       <div class="border-b border-border/40 pb-8">

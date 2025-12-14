@@ -7,6 +7,7 @@ import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
+import { NoiseBackgroundComponent } from '../shared/components/noise-background/noise-background';
 
 export const routeMeta: RouteMeta = {
   title: 'Projects - Oussema Sahbeni',
@@ -14,7 +15,13 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   selector: 'app-projects',
-  imports: [HlmCardImports, HlmButtonImports, HlmBadgeImports, HlmIconImports],
+  imports: [
+    HlmCardImports,
+    HlmButtonImports,
+    HlmBadgeImports,
+    HlmIconImports,
+    NoiseBackgroundComponent,
+  ],
   providers: [
     provideIcons({
       lucideExternalLink,
@@ -22,6 +29,7 @@ export const routeMeta: RouteMeta = {
     }),
   ],
   template: `
+    <app-noise-background />
     <section
       class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24 animate-in fade-in slide-in-from-bottom-4 duration-500  "
     >

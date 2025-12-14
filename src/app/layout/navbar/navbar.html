@@ -1,6 +1,4 @@
-<header
-  class="fixed top-0 z-50 h-16 w-full bg-white/80 backdrop-blur-md border-b border-zinc-200/50 dark:bg-zinc-950/80 dark:border-zinc-800/50"
->
+<header class="fixed top-0 z-50 h-16 w-full backdrop-blur-md border-b">
   <nav class="relative flex h-full px-10 justify-between">
     <!-- Logo Section -->
     <a
@@ -48,6 +46,7 @@
 
         <button
           hlmBtn
+          class="cursor-pointer"
           aria-label="Open GitHub Profile"
           size="icon"
           variant="ghost"
@@ -63,6 +62,7 @@
           size="icon"
           variant="ghost"
           type="button"
+          class="cursor-pointer"
           (click)="openX()"
         >
           <ng-icon
@@ -78,6 +78,7 @@
           size="icon"
           variant="ghost"
           type="button"
+          class="cursor-pointer"
           (click)="openLinkedIn()"
         >
           <ng-icon
@@ -92,7 +93,7 @@
 
         <!-- Mobile Menu Button -->
         <button
-          class="sm:hidden"
+          class="sm:hidden cursor-pointer"
           (click)="toggle()"
           [attr.aria-expanded]="menuOpen()"
           aria-label="Toggle mobile navigation menu"

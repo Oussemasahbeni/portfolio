@@ -20,6 +20,7 @@ declare const gtag: Function;
   },
   template: `
     <app-navbar />
+
     <main class="flex-1">
       <router-outlet />
     </main>
