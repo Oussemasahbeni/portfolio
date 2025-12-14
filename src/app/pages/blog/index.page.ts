@@ -3,7 +3,7 @@ import { RouteMeta } from '@analogjs/router';
 import { Component, computed, signal } from '@angular/core';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { BlogPreview } from '../../components/blog/blog-preview/blog-preview';
-import { ContentMetadata } from '../../lib/content-metadata/content-metadata';
+import { ContentMetadata } from '../../models/content-metadata';
 
 export const routeMeta: RouteMeta = {
   title: 'Blog - Oussema Sahbeni',

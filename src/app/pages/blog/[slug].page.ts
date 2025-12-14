@@ -4,15 +4,12 @@ import {
   MarkdownComponent,
 } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
-import { DatePipe, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  DOCUMENT,
   inject,
-  PLATFORM_ID,
-  signal,
 } from '@angular/core';
 
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -27,15 +24,17 @@ import { radixCalendar, radixClock } from '@ng-icons/radix-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmSkeletonImports } from '@spartan-ng/helm/skeleton';
-import { ReadTimePipe } from '../../components/pipes/read-time.pipe';
-import { ReadingProgress } from '../../components/reading-progress/reading-progress';
-import { ShareButton } from '../../components/share-button/share-button';
-import { ContentMetadata } from '../../lib/content-metadata/content-metadata';
+import { TableOfContent } from '../../components/blog/table-of-content/table-of-content';
+import { parseToc } from '../../components/blog/table-of-content/toc.util';
+
 import {
   postMetaResolver,
   postTitleResolver,
-} from '../../lib/resolvers/resolvers';
-import { parseToc } from '../../util/toc.util';
+} from '../../core/resolvers/resolvers';
+import { ContentMetadata } from '../../models/content-metadata';
+import { ReadingProgress } from '../../shared/components/reading-progress/reading-progress';
+import { ShareButton } from '../../shared/components/share-button/share-button';
+import { ReadTimePipe } from '../../shared/pipes/read-time.pipe';
 
 export const routeMeta: RouteMeta = {
   title: postTitleResolver,
@@ -62,6 +61,7 @@ export const routeMeta: RouteMeta = {
     MarkdownComponent,
     DatePipe,
     ReadTimePipe,
+    TableOfContent,
     HlmIconImports,
     HlmSkeletonImports,
     HlmButtonImports,
@@ -135,32 +135,7 @@ export const routeMeta: RouteMeta = {
         </div>
       </article>
 
-      <aside class="hidden lg:col-span-3 lg:block">
-        <div class="sticky top-24 w-full">
-          @if (toc().length > 0) {
-
-          <div class="flex flex-row items-stretch">
-            <div class="w-px bg-border mr-4"></div>
-            <div class="flex flex-col gap-2 pb-4">
-              <h3 class="font-semibold mb-4 text-sm">Table of Contents</h3>
-              <nav class="flex flex-col gap-2 text-sm text-muted-foreground">
-                @for(item of toc(); track item.id) {
-                <a
-                  (click)="scrollTo(item.id); $event.preventDefault()"
-                  [href]="'#' + item.id"
-                  class=" hover:text-blue-400 text-xs"
-                  [class.pl-4]="item.level === 3"
-                  [class.font-medium]="item.level === 2"
-                >
-                  {{ item.text }}
-                </a>
-                }
-              </nav>
-            </div>
-          </div>
-          }
-        </div>
-      </aside>
+      <app-table-of-content [tableOfContentItems]="tableOfContentItems()" />
     </div>
     } @else {
     <div class="flex flex-col space-y-3 max-w-7xl mx-auto">
@@ -177,29 +152,10 @@ export const routeMeta: RouteMeta = {
   `,
 })
 export default class BlogPost {
-  private readonly document = inject(DOCUMENT);
-  private readonly platformId = inject(PLATFORM_ID);
-
   readonly article = toSignal(injectContent<ContentMetadata>());
 
-  readonly toc = computed(() => {
+  readonly tableOfContentItems = computed(() => {
     const article = this.article();
     return article ? parseToc(article.content) : [];
   });
-
-  scrollTo(id: string) {
-    if (isPlatformBrowser(this.platformId)) {
-      const element = this.document.getElementById(id);
-      if (element) {
-        const headerOffset = 100;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
-      }
-    }
-  }
 }

@@ -1,6 +1,6 @@
 import { injectContentFiles } from '@analogjs/content';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ContentMetadata } from '../../../lib/content-metadata/content-metadata';
+import { ContentMetadata } from '../../../models/content-metadata';
 import { FeaturedBlogPreview } from '../featured-blog-preview/featured-blog-preview';
 
 @Component({

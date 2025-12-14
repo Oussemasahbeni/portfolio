@@ -16,8 +16,8 @@ import {
 } from '@ng-icons/lucide';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
-import { GithubApiService } from '../../../lib/github/github-api.service';
-import { SpotlightDirective } from '../../directives/spotlight.directive';
+import { GithubApiService } from '../../../core/services/github-api.service';
+import { SpotlightDirective } from '../../../shared/directives/spotlight.directive';
 
 interface TechStack {
   name: string;

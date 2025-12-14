@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
 import { lucideMusic } from '@ng-icons/lucide';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
-import { SpotifyService } from '../../lib/spotify/spotify.service';
+import { SpotifyService } from '../../../core/services/spotify.service';
 
 @Component({
   selector: 'app-now-playing',
@@ -14,6 +14,7 @@ import { SpotifyService } from '../../lib/spotify/spotify.service';
     }),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './now-playing.css',
   template: `
     <div
       class="group relative flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg bg-linear-to-br from-zinc-50 to-zinc-100/50 dark:from-zinc-800/90 dark:to-zinc-900/90 border border-zinc-200/60 dark:border-zinc-700/60 shadow-sm hover:shadow-md dark:shadow-zinc-950/50 transition-all duration-300 backdrop-blur-sm"

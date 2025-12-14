@@ -1,10 +1,12 @@
-export interface TocItem {
+export interface TableOfContentItem {
   id: string;
   text: string;
   level: number;
 }
 
-export function parseToc(content: string | object | undefined): TocItem[] {
+export function parseToc(
+  content: string | object | undefined
+): TableOfContentItem[] {
   if (typeof content !== 'string' || !content) return [];
 
   // Regex breakdown:
@@ -18,7 +20,7 @@ export function parseToc(content: string | object | undefined): TocItem[] {
   // 8. <\/h\1>      -> Matches closing tag </h2 or </h3 (Backreference to group 1)
   const regex = /<h(2|3)[^>]*id=["']([^"']+)["'][^>]*>(.*?)<\/h\1>/gm;
 
-  const toc: TocItem[] = [];
+  const toc: TableOfContentItem[] = [];
   let match;
 
   while ((match = regex.exec(content)) !== null) {

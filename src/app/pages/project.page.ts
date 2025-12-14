@@ -22,7 +22,9 @@ export const routeMeta: RouteMeta = {
     }),
   ],
   template: `
-    <section class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section
+      class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24 animate-in fade-in slide-in-from-bottom-4 duration-500  "
+    >
       <div class="flex flex-col gap-8">
         <!-- Section Header -->
         <div class="text-center">
@@ -88,7 +90,7 @@ export const routeMeta: RouteMeta = {
             </h4>
             <div class="flex flex-wrap gap-2">
               @for (technology of item.techs; track $index) {
-              <span variant="secondary" hlmBadge>
+              <span variant="outline" hlmBadge>
                 {{ technology }}
               </span>
               } @if(item.techs.length > 6) {

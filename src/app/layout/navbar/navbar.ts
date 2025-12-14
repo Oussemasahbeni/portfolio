@@ -12,9 +12,9 @@ import { radixHamburgerMenu, radixLinkedinLogo } from '@ng-icons/radix-icons';
 import { remixTwitterXFill } from '@ng-icons/remixicon';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
-import { GITHUB_LINK, LINKEDIN_LINK, X_LINK } from '../../../lib/constants';
-import { ClickOutsideDirective } from '../../directives/click-outisde.directive';
-import { NowPlaying } from '../../now-playing/now-playing';
+import { GITHUB_LINK, LINKEDIN_LINK, X_LINK } from '../../core/constants';
+import { NowPlaying } from '../../shared/components/now-playing/now-playing';
+import { ClickOutsideDirective } from '../../shared/directives/click-outisde.directive';
 import { ThemeToggle } from '../theme-toggle/theme-toggle';
 
 @Component({

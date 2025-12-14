@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { provideIcons } from '@ng-icons/core';
-import { radixGithubLogo, radixLinkedinLogo } from '@ng-icons/radix-icons';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonVariants, HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
 
@@ -15,6 +13,7 @@ export interface ActionButton {
   selector: 'app-hero',
   imports: [HlmButtonImports, HlmIconImports],
   templateUrl: './hero.html',
+  styleUrl: './hero.css',
   host: {
     class:
       'block  relative min-h-screen flex items-center justify-center  px-4 sm:px-6 lg:px-8',
@@ -22,6 +21,4 @@ export interface ActionButton {
 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Hero {
-
-}
+export class Hero {}

@@ -4,7 +4,7 @@ import { provideIcons } from '@ng-icons/core';
 import { radixMoon, radixSun } from '@ng-icons/radix-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
-import { ThemeService } from '../../../lib/theme/theme.service';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-theme-toggler',

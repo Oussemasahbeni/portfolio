@@ -7,7 +7,7 @@ import { lucideArrowRight } from '@ng-icons/lucide';
 import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
-import { ContentMetadata } from '../../../lib/content-metadata/content-metadata';
+import { ContentMetadata } from '../../../models/content-metadata';
 
 @Component({
   selector: 'app-featured-blog-preview',

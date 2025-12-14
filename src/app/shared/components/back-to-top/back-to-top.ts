@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -39,6 +40,7 @@ export class BackToTop {
   // @ Dependencies
   // -----------------------------------------------------------------------------------------------------
   private readonly document = inject(DOCUMENT);
+  private readonly viewportScroller = inject(ViewportScroller);
 
   // -----------------------------------------------------------------------------------------------------
   // @ Inputs
@@ -62,11 +64,6 @@ export class BackToTop {
   }
 
   scrollToTop(): void {
-    const scrollToOptions: ScrollToOptions = {
-      top: this.scrollToPosition(),
-      behavior: 'smooth',
-    };
-
-    this.document.documentElement.scrollTo(scrollToOptions);
+    this.viewportScroller.scrollToPosition([0, 0], { behavior: 'smooth' });
   }
 }

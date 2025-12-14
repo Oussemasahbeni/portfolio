@@ -1,12 +1,33 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, DOCUMENT, inject, PLATFORM_ID, signal } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  DOCUMENT,
+  inject,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { fromEvent, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'app-reading-progress',
   imports: [],
-  host: {
-    '(window:scroll)': 'onWindowScroll()',
-  },
+  styles: `
+    @keyframes grow-progess {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+    // Not yet supported in firefox
+    #progress-bar {
+      animation: grow-progess linear forwards;
+      animation-timeline: scroll();
+    }
+  `,
   template: `
     <div class="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
       <div
@@ -17,14 +38,23 @@ import { Component, DOCUMENT, inject, PLATFORM_ID, signal } from '@angular/core'
   `,
 })
 export class ReadingProgress {
-
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
-
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly readingProgress = signal(0);
 
-  onWindowScroll(): void {
+  constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      fromEvent(window, 'scroll')
+        .pipe(throttleTime(20), takeUntilDestroyed(this.destroyRef))
+        .subscribe(() => {
+          this.calculateReadingProgress();
+        });
+    }
+  }
+
+  calculateReadingProgress() {
     if (isPlatformBrowser(this.platformId)) {
       const scrollTop =
         window.scrollY || this.document.documentElement.scrollTop;

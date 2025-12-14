@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
-import { BackToTop } from './components/layout/back-to-top/back-to-top';
-import { Footer } from './components/layout/footer/footer';
-import { Navbar } from './components/layout/navbar/navbar';
+import { Footer } from './layout/footer/footer';
+import { Navbar } from './layout/navbar/navbar';
+import { BackToTop } from './shared/components/back-to-top/back-to-top';
 
 declare const gtag: Function;
 @Component({
