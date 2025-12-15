@@ -1,11 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
   signal,
   viewChild,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { lucideGithub, lucideRss } from '@ng-icons/lucide';
 import { radixHamburgerMenu, radixLinkedinLogo } from '@ng-icons/radix-icons';
@@ -43,8 +42,6 @@ import { HlmSheetImports } from '@spartan-ng/helm/sheet';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {
-  private readonly router = inject(Router);
-
   public readonly viewchildSheetRef = viewChild(BrnSheet);
 
   readonly navigation = signal([
@@ -65,8 +62,7 @@ export class Navbar {
     },
   ]);
 
-  onNavigte(link: string) {
-    this.router.navigate([link]);
+  closeMenu() {
     this.viewchildSheetRef()?.close({});
   }
 

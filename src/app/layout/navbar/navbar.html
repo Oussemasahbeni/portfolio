@@ -28,7 +28,7 @@
       <div class="hidden sm:flex items-center gap-8">
         @for(nav of navigation(); track nav){
         <a
-          (click)="onNavigte(nav.link)"
+          [routerLink]="nav.link"
           class="cursor-pointer group relative text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-all duration-200"
           aria-label="{{ nav.ariaLabel }} section"
         >
@@ -48,10 +48,22 @@
         <!-- Desktop Only Socials & Now Playing -->
         <div class="flex items-center gap-1">
           <div class="hidden sm:flex items-center gap-1">
-            <button hlmBtn size="icon" variant="ghost" (click)="openGithub()">
+            <button
+              hlmBtn
+              size="icon"
+              variant="ghost"
+              (click)="openGithub()"
+              aria-label="Visit GitHub Profile"
+            >
               <ng-icon hlm name="lucideGithub" class="text-primary" size="sm" />
             </button>
-            <button hlmBtn size="icon" variant="ghost" (click)="openX()">
+            <button
+              hlmBtn
+              size="icon"
+              variant="ghost"
+              (click)="openX()"
+              aria-label="Visit X (Twitter) Profile"
+            >
               <ng-icon
                 hlm
                 name="remixTwitterXFill"
@@ -59,7 +71,13 @@
                 size="sm"
               />
             </button>
-            <button hlmBtn size="icon" variant="ghost" (click)="openLinkedIn()">
+            <button
+              hlmBtn
+              size="icon"
+              variant="ghost"
+              (click)="openLinkedIn()"
+              aria-label="Visit LinkedIn Profile"
+            >
               <ng-icon
                 hlm
                 name="radixLinkedinLogo"
@@ -67,7 +85,13 @@
                 size="sm"
               />
             </button>
-            <button hlmBtn size="icon" variant="ghost" (click)="openRss()">
+            <button
+              hlmBtn
+              size="icon"
+              variant="ghost"
+              (click)="openRss()"
+              aria-label="Subscribe via RSS"
+            >
               <ng-icon hlm name="lucideRss" size="sm" />
             </button>
           </div>
@@ -101,7 +125,8 @@
             <div class="flex flex-col gap-6 mt-8">
               @for(nav of navigation(); track nav){
               <a
-                (click)="onNavigte(nav.link)"
+                [routerLink]="nav.link"
+                (click)="closeMenu()"
                 class="cursor-pointer text-lg font-medium text-zinc-700 hover:text-blue-600 dark:text-zinc-300 dark:hover:text-blue-400 transition-colors"
                 [ariaLabel]="nav.ariaLabel"
               >
@@ -118,29 +143,47 @@
               <app-now-playing />
 
               <!-- Mobile Socials -->
-              <div class="flex items-center gap-1">
-                <button
-                  hlmBtn
-                  size="icon"
-                  variant="ghost"
-                  (click)="openGithub()"
-                >
-                  <ng-icon hlm name="lucideGithub" size="sm" />
-                </button>
-                <button hlmBtn size="icon" variant="ghost" (click)="openX()">
-                  <ng-icon hlm name="remixTwitterXFill" size="sm" />
-                </button>
-                <button
-                  hlmBtn
-                  size="icon"
-                  variant="ghost"
-                  (click)="openLinkedIn()"
-                >
-                  <ng-icon hlm name="radixLinkedinLogo" size="sm" />
-                </button>
-                <button hlmBtn size="icon" variant="ghost" (click)="openRss()">
-                  <ng-icon hlm name="lucideRss" size="sm" />
-                </button>
+              <div class="flex flex-col gap-6 pb-4">
+                <div class="w-full h-px bg-border"></div>
+                <app-now-playing />
+                <div class="flex items-center gap-1">
+                  <button
+                    hlmBtn
+                    size="icon"
+                    variant="ghost"
+                    (click)="openGithub()"
+                    aria-label="Visit GitHub Profile"
+                  >
+                    <ng-icon hlm name="lucideGithub" size="sm" />
+                  </button>
+                  <button
+                    hlmBtn
+                    size="icon"
+                    variant="ghost"
+                    (click)="openX()"
+                    aria-label="Visit X (Twitter) Profile"
+                  >
+                    <ng-icon hlm name="remixTwitterXFill" size="sm" />
+                  </button>
+                  <button
+                    hlmBtn
+                    size="icon"
+                    variant="ghost"
+                    (click)="openLinkedIn()"
+                    aria-label="Visit LinkedIn Profile"
+                  >
+                    <ng-icon hlm name="radixLinkedinLogo" size="sm" />
+                  </button>
+                  <button
+                    hlmBtn
+                    size="icon"
+                    variant="ghost"
+                    (click)="openRss()"
+                    aria-label="Subscribe via RSS"
+                  >
+                    <ng-icon hlm name="lucideRss" size="sm" />
+                  </button>
+                </div>
               </div>
             </div>
           </hlm-sheet-content>
