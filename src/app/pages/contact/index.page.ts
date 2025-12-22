@@ -103,13 +103,13 @@ export default class Contact {
     honeypot: '',
   });
 
-  readonly contactForm = form(this.contactModel, (schemePath) => {
-    required(schemePath.email, { message: 'Email is required' });
-    email(schemePath.email, { message: 'Invalid email format' });
-    required(schemePath.name, { message: 'Name is required' });
-    required(schemePath.subject, { message: 'Subject is required' });
-    required(schemePath.message, { message: 'Message is required' });
-    minLength(schemePath.message, 10, {
+  readonly contactForm = form(this.contactModel, (schema) => {
+    required(schema.email, { message: 'Email is required' });
+    email(schema.email, { message: 'Invalid email format' });
+    required(schema.name, { message: 'Name is required' });
+    required(schema.subject, { message: 'Subject is required' });
+    required(schema.message, { message: 'Message is required' });
+    minLength(schema.message, 10, {
       message: 'Message must be at least 10 characters',
     });
   });
@@ -120,8 +120,7 @@ export default class Contact {
 
     if (!formData.valid()) return;
 
-    if (this.contactModel().honeypot !== '') {
-      console.log('Bot detected!');
+    if (this.contactForm.honeypot().value() !== '') {
       this.submitMessage.set('success');
       this.contactForm().reset();
       return;
